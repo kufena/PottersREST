@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.271
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PottersREST", "PottersREST\PottersREST.csproj", "{CE6DF5E3-3FB9-45AA-B763-43873BE356A8}"
 EndProject
@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PottersBackEndTests", "NUni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleTestFrontEnd", "SimpleTestFrontEnd\SimpleTestFrontEnd.csproj", "{EB2ED4AB-4D15-49F5-932F-3A79E021DCDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PottersRESTTests", "PottersRESTTests\PottersRESTTests.csproj", "{63D4C232-6899-40BE-AE45-E406CFA54A38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PottersRESTTests", "PottersRESTTests\PottersRESTTests.csproj", "{63D4C232-6899-40BE-AE45-E406CFA54A38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA75C01E-B86C-4646-9E20-DFD69C4989D8}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
