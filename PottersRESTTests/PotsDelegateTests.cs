@@ -45,5 +45,19 @@ namespace PottersRESTTests
             mock.Verify(foo => foo.getPotsByPotter(1), Times.AtMostOnce);
             mock.VerifyNoOtherCalls();
         }
+
+        [Test]
+        public void create_new_pot()
+        {
+            var mock = new Mock<IPotsAndPotters>();
+            Pots p = new Pots("Large Jug", 1, "Fitch");
+            mock.Setup(foo => foo.createPot(p)).Returns(1);
+
+            int? newid = new PotsDelegate(mock.Object).createPot("{1,Fitch,Large Jug}");
+
+            Assert.AreEqual(1,newid);
+            mock.Verify(foo => foo.createPot(p), Times.AtMostOnce);
+            mock.VerifyNoOtherCalls();
+        }
     }
 }

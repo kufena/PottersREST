@@ -46,5 +46,26 @@ namespace PottersREST.Delegates
             return "{" + pid + "," + potterid + "," + pottername + "," + description + "}";
         }
 
+        public int? createPot(string v)
+        {
+            Pots p = parsePot(v);
+            if (p == null)
+                return null;
+            return backEnd.createPot(p);
+        }
+
+        private Pots parsePot(string v)
+        {
+            string[] splits = v.Split(new char[] { ',', '{', '}' }, StringSplitOptions.RemoveEmptyEntries);
+            if (splits.Length == 3)
+            {
+                int potterid;
+                if (int.TryParse(splits[0], out potterid))
+                {
+                    return new Pots(splits[2], potterid, splits[1]);
+                }
+            }
+            return null;
+        }
     }
 }

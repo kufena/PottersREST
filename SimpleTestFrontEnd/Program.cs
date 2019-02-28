@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 
 using PottersBackEnd;
+using PottersREST.Delegates;
 
 namespace SimpleTestFrontEnd
 {
@@ -27,6 +28,14 @@ namespace SimpleTestFrontEnd
             list = ipap.getAllPotters();
             Console.WriteLine("Number of potters found = " + list.Count);
 
+            PottersDelegate pd = new PottersDelegate(ipap);
+            int? newid = pd.CreatePotter("{Stephen Parry, England}");
+
+            Console.WriteLine("New id is " + newid);
+
+            PotsDelegate pod = new PotsDelegate(ipap);
+            pod.createPot("{"+newid+",Stephen Parry, Ash glazed slender Jug}");
+
             /*
             Pots newpot = new Pots();
             if (potter.Id == null)
@@ -40,7 +49,7 @@ namespace SimpleTestFrontEnd
                 Console.WriteLine("my pot id is " + mypotid);
             }
             */
-
+            
             List<Pots> allpots = ipap.getAllPots();
             List<Pots> ronpots = ipap.getPotsByPotter((int)potter.Id);
 

@@ -42,7 +42,7 @@ namespace PottersBackEnd
         {
             if (pot is Pots)
             {
-                return Id == ((Potters)pot).Id;
+                return Id == ((Pots)pot).Id;
             }
             return false;
         }
