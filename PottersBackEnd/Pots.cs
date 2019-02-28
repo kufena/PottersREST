@@ -29,11 +29,12 @@ namespace PottersBackEnd
             PotterName = pottername;
         }
 
-        public void Deconstruct(out int id, out int potter, out string pottername)
+        public void Deconstruct(out int id, out int potter, out string pottername, out string description)
         {
             id = Id;
             potter = Potter;
             pottername = PotterName;
+            description = Description;
         }
 
         // I've overridden equals here to make the mock objects in the test work.
