@@ -29,12 +29,12 @@ namespace SimpleTestFrontEnd
             Console.WriteLine("Number of potters found = " + list.Count);
 
             PottersDelegate pd = new PottersDelegate(ipap);
-            int? newid = pd.CreatePotter("{Stephen Parry, England}");
+            int? newid = pd.CreatePotter("{Hannah McAndrew, Scotland}");
 
             Console.WriteLine("New id is " + newid);
 
             PotsDelegate pod = new PotsDelegate(ipap);
-            pod.createPot("{"+newid+",Stephen Parry, Ash glazed slender Jug}");
+            pod.createPot("{"+newid+",Hannah McAndrew,Slipware Tyg with fine Trailing}");
 
             /*
             Pots newpot = new Pots();

@@ -28,7 +28,7 @@ namespace PottersBackEnd
             {
                 conn.Open();
                 
-                MySqlCommand command = new MySqlCommand("select pots.Id as Id, potters.Id as PottersId, potters.Name as PotterName, pots.Description as Description from pots join potters where pots.potter = potters.Id and Live = 'T'", conn);
+                MySqlCommand command = new MySqlCommand("select pots.Id as Id, potters.Id as PottersId, potters.Name as PotterName, pots.Description as Description from pots join potters where pots.pottersId = potters.Id and Live = 'T'", conn);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -55,7 +55,7 @@ namespace PottersBackEnd
 
                 MySqlCommand command = new MySqlCommand("select pots.Id as Id, potters.Id as PottersId, potters.Name as PotterName, " +
                     "pots.Description as Description from pots join potters " +
-                    "where pots.potterId = potters.Id and potters.Id=" + potterId + " and Live = '1'", conn);
+                    "where pots.pottersId = potters.Id and potters.Id=" + potterId + " and Live = '1'", conn);
                 using (MySqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
