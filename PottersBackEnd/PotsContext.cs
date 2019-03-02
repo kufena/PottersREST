@@ -83,7 +83,7 @@ namespace PottersBackEnd
                 {
                     MySqlCommand command = new MySqlCommand("select pots.Id as Id, potters.Id as PottersId, potters.Name as PotterName, " +
                         "pots.Description as Description from pots join potters " +
-                        "where pots.Id = ?potid and pots.potterId = potters.Id and Live = '1'", conn);
+                        "where pots.Id = ?potid and pots.pottersId = potters.Id and Live = '1'", conn);
                     command.Parameters.AddWithValue("?potid", potId);
                     using (MySqlDataReader reader = command.ExecuteReader())
                     {

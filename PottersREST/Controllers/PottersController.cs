@@ -40,6 +40,9 @@ namespace PottersREST.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            int? newid = (new PottersDelegate(backEnd)).CreatePotter(value);
+            HttpContext.Response.Headers.Add(new KeyValuePair<string, Microsoft.Extensions.Primitives.StringValues>("Location",
+    new Microsoft.Extensions.Primitives.StringValues("https://localhost:5001/potters/potters/" + newid)));
         }
 
         // PUT api/values/5
