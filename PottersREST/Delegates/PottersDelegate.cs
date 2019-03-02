@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PottersBackEnd;
 
 namespace PottersREST.Delegates
@@ -23,8 +24,7 @@ namespace PottersREST.Delegates
             int count = 0;
             foreach (var potter in allpotters)
             {
-                (var id, var name, var country) = potter;
-                vals[count] = "{" + id + "," + name + "," + country + "}";
+                vals[count] = JsonConvert.SerializeObject(potter);
                 count++;
             }
             return vals;
@@ -37,8 +37,7 @@ namespace PottersREST.Delegates
                 return null;
             else
             {
-                (var id, var name, var country) = potter;
-                return "{" + id + "," + name + "," + country + "}";
+                return JsonConvert.SerializeObject(potter);
             }
         }
 
@@ -47,24 +46,14 @@ namespace PottersREST.Delegates
             // format should be {<id>,<name>,<country>} but no id.
             // so just {<name>,<country>} ?
 
-            (var pname, var pcountry) = parsePotter(s);
-            Potters potter = new Potters();
-            potter.Name = pname;
-            potter.Country = pcountry;
-
+            Potters potter = parsePotter(s);
             int? newid = backEnd.createPotter(potter);
             return newid;
         }
 
-        (string,string) parsePotter(string s)
+        Potters parsePotter(string s)
         {
-            // I think strictly speaking, this is incorrect.  To remove empty entries
-            // ignores the fact I might have given "{fred,,,,,jimbo,,,}"
-            var splits = s.Split(new char[] { '{', ',', '}' }, StringSplitOptions.RemoveEmptyEntries);
-            if (splits.Length == 2)
-                return (splits[0], splits[1]);
-            return (null, null);
+            return JsonConvert.DeserializeObject<Potters>(s);
         }
-        
     }
 }

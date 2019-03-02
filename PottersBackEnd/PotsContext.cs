@@ -36,7 +36,7 @@ namespace PottersBackEnd
                         list.Add(new Pots()
                         {
                             Id = Convert.ToInt32(reader.GetUInt32("Id")),
-                            Potter = Convert.ToInt32(reader.GetUInt32("PottersId")),
+                            PottersId = Convert.ToInt32(reader.GetUInt32("PottersId")),
                             Description = reader.GetString("Description"),
                             PotterName = reader.GetString("PotterName")
                         });
@@ -63,7 +63,7 @@ namespace PottersBackEnd
                         list.Add(new Pots()
                         {
                             Id = Convert.ToInt32(reader.GetUInt32("Id")),
-                            Potter = Convert.ToInt32(reader.GetUInt32("PottersId")),
+                            PottersId = Convert.ToInt32(reader.GetUInt32("PottersId")),
                             Description = reader.GetString("Description"),
                             PotterName = reader.GetString("PotterName")
                         });
@@ -92,7 +92,7 @@ namespace PottersBackEnd
                             return new Pots()
                             {
                                 Id = Convert.ToInt32(reader.GetUInt32("Id")),
-                                Potter = Convert.ToInt32(reader.GetUInt32("PottersId")),
+                                PottersId = Convert.ToInt32(reader.GetUInt32("PottersId")),
                                 Description = reader.GetString("Description"),
                                 PotterName = reader.GetString("PotterName")
                             };
@@ -114,7 +114,7 @@ namespace PottersBackEnd
             {
                 conn.Open();
                 MySqlCommand command = new MySqlCommand("insert into pots (PottersId, Name, Description) values (?pottersid, ?name, ?description)", conn);
-                command.Parameters.AddWithValue("?pottersid", pot.Potter);
+                command.Parameters.AddWithValue("?pottersid", pot.PottersId);
                 command.Parameters.AddWithValue("?name", pot.PotterName);
                 command.Parameters.AddWithValue("?description", pot.Description);
                 int rowsaffected = command.ExecuteNonQuery();

@@ -15,7 +15,7 @@ namespace PottersBackEnd
 
         public int? createPot(Pots pot)
         {
-            Potters potter = this.getPotterById(pot.Potter);
+            Potters potter = this.getPotterById(pot.PottersId);
             if (potter == null)
                 return null;
 

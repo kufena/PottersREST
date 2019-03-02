@@ -24,7 +24,7 @@ namespace PottersRESTTests
 
             var s = new PotsDelegate(mock.Object).getPotById(2);
 
-            Assert.AreEqual("{2,1,Fitch,Large Jug}", s);
+            Assert.AreEqual("{\"Id\":2,\"PottersId\":1,\"Description\":\"Large Jug\",\"PotterName\":\"Fitch\"}", s);
             mock.Verify(foo => foo.getPotById(2), Times.AtMostOnce);
             mock.VerifyNoOtherCalls();
         }
@@ -53,7 +53,7 @@ namespace PottersRESTTests
             Pots p = new Pots("Large Jug", 1, "Fitch");
             mock.Setup(foo => foo.createPot(p)).Returns(1);
 
-            int? newid = new PotsDelegate(mock.Object).createPot("{1,Fitch,Large Jug}");
+            int? newid = new PotsDelegate(mock.Object).createPot("{\"PottersId\": 1, \"PotterName\" : \"Fitch\", \"Description\" : \"Large Jug\"}");
 
             Assert.AreEqual(1,newid);
             mock.Verify(foo => foo.createPot(p), Times.AtMostOnce);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PottersBackEnd;
 
 namespace PottersREST.Delegates
@@ -42,8 +43,11 @@ namespace PottersREST.Delegates
 
         private static string stringify_pot(Pots pot)
         {
-            (var pid, var potterid, var pottername, var description) = pot;
-            return "{" + pid + "," + potterid + "," + pottername + "," + description + "}";
+            string s = JsonConvert.SerializeObject(pot);
+            return s;
+
+            //(var pid, var potterid, var pottername, var description) = pot;
+            //return "{" + pid + "," + potterid + "," + pottername + "," + description + "}";
         }
 
         public int? createPot(string v)
@@ -56,6 +60,9 @@ namespace PottersREST.Delegates
 
         private Pots parsePot(string v)
         {
+            Pots p = JsonConvert.DeserializeObject<Pots>(v);
+            return p;
+            /*
             string[] splits = v.Split(new char[] { ',', '{', '}' }, StringSplitOptions.RemoveEmptyEntries);
             if (splits.Length == 3)
             {
@@ -66,6 +73,7 @@ namespace PottersREST.Delegates
                 }
             }
             return null;
+            */
         }
     }
 }

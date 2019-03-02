@@ -78,7 +78,7 @@ namespace PottersRESTTests
         public void create_potter_test()
         {
             var ipap = new Mock<IPotsAndPotters>();
-            string s = "{Clive Bowen, England}";
+            string s = "{\"Name\":\"Clive Bowen\",\"Country\":\"England\"}";
             Potters p = new Potters();
             p.Name = "Clive Bowen";
             p.Country = "England";

@@ -17,7 +17,7 @@ namespace Tests
             Pots pot = new Pots();
             pot.PotterName = "Jimi";
             pot.Id = 22;
-            pot.Potter = 1;
+            pot.PottersId = 1;
             pot.Description = "Large Bowl";
 
             (int pot_id, int pot_potterid, String pot_pottername,String pot_description) = pot;
