@@ -50,16 +50,6 @@ namespace PottersREST
 
             app.UseHttpsRedirection();
             app.UseMvc();
-            /* app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "mygetroute",
-                    template: "potters/get",
-                    defaults: new { controller = "potters", action = "get" }
-                    );
-            });
-
-            app.UseMvcWithDefaultRoute(); */
         }
     }
 }
