@@ -20,4 +20,6 @@ A note:  To make the Post part work, you have to use a string in double quotes, 
 
 In fact, that's a whole request right there, with the content type set to application/json and the accepted type set the same, with a fully escaped and quoted string.
 
-I'm sure there must be a way of setting these for specific requests - what if you didn't want to use json?  But out of the box, this is the only way I could see of getting it to pass all the way through to my controller class.
+I'm sure there must be a way of setting these for each controller - what if you didn't want to use json?  But out of the box, this is the only way I could see of getting it to pass all the way through to my controller class.
+
+Also, a shout out to SOAP-UI - https://www.soapui.org/ - a nice graphical tool for testing HTTP methods.
