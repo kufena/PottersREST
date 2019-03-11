@@ -11,10 +11,12 @@ namespace PottersREST.Delegates
     {
 
         IPotsAndPotters backEnd;
+        IURLHelper urlhelper;
 
-        public PotsDelegate(IPotsAndPotters ipap)
+        public PotsDelegate(IPotsAndPotters ipap, IURLHelper urlhelper)
         {
             backEnd = ipap;
+            this.urlhelper = urlhelper;
         }
 
         public string getPotById(int id)
@@ -41,13 +43,12 @@ namespace PottersREST.Delegates
             return results;
         }
 
-        private static string stringify_pot(Pots pot)
+        private string stringify_pot(Pots pot)
         {
-            string s = JsonConvert.SerializeObject(pot);
-            return s;
+            JSONPot jsonpot = new JSONPot(pot, urlhelper);
+            string s = JsonConvert.SerializeObject(jsonpot);
 
-            //(var pid, var potterid, var pottername, var description) = pot;
-            //return "{" + pid + "," + potterid + "," + pottername + "," + description + "}";
+            return s;
         }
 
         public int? createPot(string v)

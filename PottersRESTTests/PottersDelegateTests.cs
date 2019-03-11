@@ -20,7 +20,9 @@ namespace PottersRESTTests
         {
             var ipap = new Mock<IPotsAndPotters>();
             ipap.Setup(foo => foo.getAllPotters()).Returns(new List<Potters>());
-            PottersDelegate pc = new PottersDelegate((IPotsAndPotters)ipap.Object);
+            var urlhelper = new Mock<IURLHelper>();
+
+            PottersDelegate pc = new PottersDelegate((IPotsAndPotters)ipap.Object, urlhelper.Object);
 
             string[] outs = pc.GetAll();
 
@@ -38,7 +40,9 @@ namespace PottersRESTTests
             returned.Add(fitch);
 
             ipap.Setup(foo => foo.getAllPotters()).Returns(returned);
-            PottersDelegate pc = new PottersDelegate((IPotsAndPotters)ipap.Object);
+            var urlhelper = new Mock<IURLHelper>();
+
+            PottersDelegate pc = new PottersDelegate((IPotsAndPotters)ipap.Object, urlhelper.Object);
 
             string[] outs = pc.GetAll();
 
@@ -54,7 +58,9 @@ namespace PottersRESTTests
             List<Potters> returned = makeThreePotters();
 
             ipap.Setup(foo => foo.getAllPotters()).Returns(returned);
-            PottersDelegate pc = new PottersDelegate((IPotsAndPotters)ipap.Object);
+            var urlhelper = new Mock<IURLHelper>();
+
+            PottersDelegate pc = new PottersDelegate((IPotsAndPotters)ipap.Object, urlhelper.Object);
 
             string[] outs = pc.GetAll();
 
@@ -68,7 +74,9 @@ namespace PottersRESTTests
         {
             var ipap = new Mock<IPotsAndPotters>();
             ipap.Setup(foo => foo.getPotterById(1)).Returns(new Potters(1, "Fitch", "Scotland"));
-            PottersDelegate pd = new PottersDelegate(ipap.Object);
+            var urlhelper = new Mock<IURLHelper>();
+
+            PottersDelegate pd = new PottersDelegate(ipap.Object, urlhelper.Object);
             string s = pd.GetById(1);
             ipap.Verify(foo => foo.getPotterById(1), Times.AtMostOnce);
             ipap.VerifyNoOtherCalls();
@@ -83,8 +91,9 @@ namespace PottersRESTTests
             p.Name = "Clive Bowen";
             p.Country = "England";
             ipap.Setup(foo => foo.createPotter(p)).Returns(4);
+            var urlhelper = new Mock<IURLHelper>();
 
-            PottersDelegate pd = new PottersDelegate(ipap.Object);
+            PottersDelegate pd = new PottersDelegate(ipap.Object, urlhelper.Object);
             int? newid = pd.CreatePotter(s);
             Assert.AreNotEqual(null, newid);
             Assert.AreEqual(4, newid);

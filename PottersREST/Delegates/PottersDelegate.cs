@@ -11,10 +11,12 @@ namespace PottersREST.Delegates
     {
 
         IPotsAndPotters backEnd;
+        IURLHelper urlhelper;
 
-        public PottersDelegate(IPotsAndPotters ipap)
+        public PottersDelegate(IPotsAndPotters ipap, IURLHelper urlhelper)
         {
             backEnd = ipap;
+            this.urlhelper = urlhelper;
         }
 
         public string[] GetAll()
@@ -24,7 +26,8 @@ namespace PottersREST.Delegates
             int count = 0;
             foreach (var potter in allpotters)
             {
-                vals[count] = JsonConvert.SerializeObject(potter);
+                JSONPotter jpotter = new JSONPotter(potter, urlhelper);
+                vals[count] = JsonConvert.SerializeObject(jpotter);
                 count++;
             }
             return vals;
@@ -37,7 +40,7 @@ namespace PottersREST.Delegates
                 return null;
             else
             {
-                return JsonConvert.SerializeObject(potter);
+                return JsonConvert.SerializeObject(new JSONPotter(potter,urlhelper));
             }
         }
 
